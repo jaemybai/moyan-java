@@ -1,9 +1,14 @@
 package com.moyan.example.j2se.thread;
 
 
+import com.moyan.example.j2se.base.ViolateTest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class ThreadTest {
 
-	
+	private static Logger logger = LoggerFactory.getLogger(ViolateTest.class);
+
 	private int number1 = 0;
 	
 	public void test1() {
@@ -15,10 +20,10 @@ public class ThreadTest {
 	}
 	
 	public void check() {
-		System.out.println("execute method:check() " );
+		logger.info("execute method:check() " );
 		
 		if(number1 != 1 && number1 != 2) {
-			System.out.println("check test...");
+			logger.info("check test...");
 		}
 	}
 	

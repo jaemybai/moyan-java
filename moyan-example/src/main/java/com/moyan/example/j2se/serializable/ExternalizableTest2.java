@@ -1,4 +1,8 @@
 package com.moyan.example.j2se.serializable;
+import com.moyan.example.j2se.base.ViolateTest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.Externalizable;
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,6 +21,7 @@ import java.io.ObjectOutputStream;
  *
  */
 public class ExternalizableTest2 implements Externalizable {
+    private static Logger logger = LoggerFactory.getLogger(ViolateTest.class);
 
     private  String content = "是的，我将会被序列化，不管我是否被transient关键字修饰";
     private String user = "user";
@@ -55,7 +60,7 @@ public class ExternalizableTest2 implements Externalizable {
         ObjectInput in = new ObjectInputStream(new FileInputStream(new File(
                 "test")));
         Object et2 =  in.readObject();
-        System.out.println(et2);
+        logger.info("" + et2);
 
         out.close();
         in.close();

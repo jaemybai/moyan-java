@@ -1,69 +1,75 @@
 package com.moyan.example.j2se.thread;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class LockConditionTest {
+	
+	private static Logger logger = LoggerFactory.getLogger(LockConditionTest.class);
+	
     private Lock lock = new ReentrantLock();
 	private Condition condition  = lock.newCondition();
 	private Condition condition2 = lock.newCondition();
 	public void await1() {
 		try {
 			lock.lock();
-			System.out.println("执行 await1 方法");
+			logger.info("执行 await1 方法");
 			condition.await();
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage(),e);
 		} finally {
-			System.out.println("await1 锁释放了1");
+			logger.info("await1 锁释放了1");
 			lock.unlock();
-			System.out.println("await1 锁释放了2");
+			logger.info("await1 锁释放了2");
 		}
 	}
 	
 	public void await2() {
 		try {
 			lock.lock();
-			System.out.println("执行 await2 方法");
+			logger.info("执行 await2 方法");
 			condition2.await();
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage(),e);
 		} finally {
-			System.out.println("await2锁释放了1");
+			logger.info("await2锁释放了1");
 			lock.unlock();
-			System.out.println("await2锁释放了2");
+			logger.info("await2锁释放了2");
 		}
 	}
 	
 	public void signal1() {
 		try {
 			lock.lock();
-			System.out.println("执行signal1方法");
+			logger.info("执行signal1方法");
 			condition.signal();
-			System.out.println("通知了await1 ");
+			logger.info("通知了await1 ");
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage(),e);
 		} finally {
-			System.out.println("signal1方法结束1");
+			logger.info("signal1方法结束1");
 			lock.unlock();
-			System.out.println("signal1方法结束2");
+			logger.info("signal1方法结束2");
 		}
 	}
 	
 	public void signal2() {
 		try {
 			lock.lock();
-			System.out.println("执行signal2方法");
+			logger.info("执行signal2方法");
 //			Thread.sleep(100000);
 			condition2.signal();
-			System.out.println("通知了await2 ");
+			logger.info("通知了await2 ");
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage(),e);
 		} finally {
-			System.out.println("signal2方法结束1");
+			logger.info("signal2方法结束1");
 			lock.unlock();
-			System.out.println("signal2方法结束2");
+			logger.info("signal2方法结束2");
 		}
 	}
 

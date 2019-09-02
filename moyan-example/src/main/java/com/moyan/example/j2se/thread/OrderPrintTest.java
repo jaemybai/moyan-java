@@ -53,17 +53,17 @@ package com.moyan.example.j2se.thread;//package com.xlbai.base.j2se.thread;
 //                }
 //
 //            }catch (Exception e) {
-//                e.printStackTrace();
+//                logger.error(e.getMessage(),e)
 //            }
 //        });
-//        System.out.println();
+//        logger.info();
 //    }
 //
 //    private void printWrapper() {
 //        try {
 //            print();
 //        }catch (Exception e) {
-//            e.printStackTrace();
+//            logger.error(e.getMessage(),e)
 //        }
 //    }
 //    public synchronized void print() throws Exception{

@@ -1,5 +1,8 @@
 package com.moyan.example.http;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,10 +12,12 @@ import java.net.URLConnection;
 
 public class http {
 
+	private static Logger logger = LoggerFactory.getLogger(http.class);
+
 	public static void main(String[] args) throws Exception {
 		
 		
-		String urlStr = "https://passport.csdn.net/?service=http://write.blog.csdn.net/postlist";
+		String urlStr = "https://passport.csdn.net/?server=http://write.blog.csdn.net/postlist";
 		String fileName;
 		urlStr = "https://github.com/";
 //		urlStr = "https://workspace.citi.com/vpn/index.html";
@@ -26,11 +31,11 @@ public class http {
 //		fileName = "apache-activemq-5.14.4-bin.zip";
 		URL url = new URL(urlStr);
 		URLConnection urlConnection = url.openConnection();
-		System.out.println(urlConnection.getClass().getCanonicalName());
-		System.out.println("start.............");
+		logger.info(urlConnection.getClass().getCanonicalName());
+		logger.info("start.............");
 		operation(urlConnection);
 		writeToFile(urlConnection, fileName);
-		System.out.println("end...........");
+		logger.info("end...........");
 	}
 	
 	public static void operation(URLConnection urlConnection) throws IOException{
@@ -54,7 +59,7 @@ public class http {
 		while(true) {
 			len = inputStream.read(data, 0, data.length);
 			if(len == -1) {
-				System.out.println("read end..");
+				logger.info("read end..");
 				break;
 			}
 			outputStream.write(data, 0, len);

@@ -1,5 +1,8 @@
 package com.moyan.example.j2se.swing;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.awt.Container;
 import java.awt.FlowLayout;
 
@@ -15,6 +18,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Ss extends JFrame {
+
+	private static Logger logger = LoggerFactory.getLogger(Ss.class);
+
 	Container con = this.getContentPane();
 	JButton jb1 = new JButton("jb1");
 	JButton jb2 = new JButton("jb2");
@@ -53,14 +59,14 @@ public class Ss extends JFrame {
 							Thread.sleep(2000);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
-							e.printStackTrace();
+							logger.error(e.getMessage(),e);
 						}
 					}
 					}
 				}.start();
-				System.out.println(12);
+				logger.info("" + 12);
 				Thread.sleep(2000);
-				System.out.println(22);
+				logger.info("" + 22);
 
 			} catch (Exception ex) {
 				ex.printStackTrace();

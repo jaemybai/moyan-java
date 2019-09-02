@@ -1,5 +1,9 @@
 package com.moyan.example.http;
 
+import com.moyan.example.j2se.base.ViolateTest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
@@ -13,6 +17,9 @@ import java.net.URLConnection;
 import java.net.UnknownHostException;
 
 public class FirstSocket {
+
+	private static Logger logger = LoggerFactory.getLogger(ViolateTest.class);
+
 	public static void main(String args[]) throws Exception {
 		String strServer = "www.sina.com.cn";
 		// 取得第一个参数
@@ -38,16 +45,10 @@ public class FirstSocket {
 		 socket.getInputStream()));
 		 String line;
 		 while ((line = rd.readLine()) != null) {
-		 System.out.println(line);
+		 logger.info(line);
 		 }
 		 wr.close();
 		 rd.close();
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// }
-//		String file = "1.html";
-//		OutputStream outputStream = new FileOutputStream(file);
-//		writeToFile(socket.getInputStream(), outputStream);
 	}
 
 	public static void writeToFile(InputStream inputStream,
@@ -58,7 +59,7 @@ public class FirstSocket {
 		while (true) {
 			len = inputStream.read(data, 0, data.length);
 			if (len == -1) {
-				System.out.println("read end..");
+				logger.info("read end..");
 				break;
 			}
 			outputStream.write(data, 0, len);

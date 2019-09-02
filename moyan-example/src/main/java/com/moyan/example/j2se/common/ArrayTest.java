@@ -1,14 +1,19 @@
 package com.moyan.example.j2se.common;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Arrays;
 import java.util.Comparator;
 
 
 public class ArrayTest {
 
+	private static Logger logger = LoggerFactory.getLogger(ArrayTest.class);
+
 	public static void main(String[] args) {
 		Integer[] arrays = new Integer[]{1,2,3,4,5,11,9,2};
 		
-		System.out.println(Arrays.toString(arrays));
+		logger.info(Arrays.toString(arrays));
 		int count = 0;
 		for(int i=0;i<arrays.length;i++) {
 			
@@ -22,8 +27,8 @@ public class ArrayTest {
 				}
 			}
 		}
-		System.out.println(Arrays.toString(arrays));
-		System.out.println(count);
+		logger.info(Arrays.toString(arrays));
+		logger.info("" + count);
 		
 		
 		Arrays.sort(arrays, 
@@ -36,7 +41,7 @@ public class ArrayTest {
 					}
 					
 		});
-		System.out.println(Arrays.toString(arrays));
+		logger.info(Arrays.toString(arrays));
 
 	}
 

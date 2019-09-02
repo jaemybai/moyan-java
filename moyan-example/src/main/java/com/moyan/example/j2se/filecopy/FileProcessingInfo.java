@@ -1,5 +1,9 @@
 package com.moyan.example.j2se.filecopy;
 
+import com.moyan.example.j2se.base.ViolateTest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
 import java.math.BigDecimal;
 
@@ -9,6 +13,7 @@ import java.math.BigDecimal;
  *
  */
 public class FileProcessingInfo {
+	private static Logger logger = LoggerFactory.getLogger(ViolateTest.class);
 
 	private File file = null;
 	private long size = 0;
@@ -51,7 +56,7 @@ public class FileProcessingInfo {
 		float f = (float)450057000/500687384;
 		BigDecimal   bigg = new BigDecimal(f);
 		float ff = bigg.setScale(3, BigDecimal.ROUND_HALF_UP).floatValue();
-		System.out.println(f);
-		System.out.println(ff);
+		logger.info("" + f);
+		logger.info("" + ff);
 	}
 }

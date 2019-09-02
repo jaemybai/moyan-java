@@ -1,22 +1,27 @@
 package com.moyan.example.j2se.common;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class FinalUse {
+
+	private static Logger logger = LoggerFactory.getLogger(FinalUse.class);
 
 	public static void main(String[] args) {
 		
 		A a = new A();
 		new FinalUse().add(a);
-		System.out.println(a.i);
+		logger.info("" + a.i);
 		new FinalUse().add(a.i);
 	}
 	
 	public void add(final A a) {
 //		a = new A();
-		System.out.println(++a.i);
+		logger.info("" + ++a.i);
 	}
 	
 	public void add(final int a) {
-		System.out.println(a);
+		logger.info("" + a);
 	}
 }
 

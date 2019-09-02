@@ -1,5 +1,8 @@
 package com.moyan.example.j2se.sort;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -7,6 +10,8 @@ import java.util.List;
 
 
 public class CompareTest {
+
+	private static Logger logger = LoggerFactory.getLogger(CompareTest.class);
 
 	public static void main(String[] args) {
 		Integer[] sorts = new Integer[]{1,42,2,null,10,53,null,9,75,98,null};
@@ -39,11 +44,11 @@ public class CompareTest {
 				return (int)l;
 			}
 		};
-		System.out.println(comp2);
-		System.out.println(Arrays.toString(sorts));
-		System.out.println(list);
+		logger.info("" + comp2);
+		logger.info(Arrays.toString(sorts));
+		logger.info("" + list);
 		Collections.sort(list, comp);
-		System.out.println(list);
+		logger.info("" + list);
 		
 	}
 }

@@ -1,5 +1,8 @@
 package com.moyan.example.rmi;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.net.MalformedURLException;
 import java.nio.channels.AlreadyBoundException;
 import java.rmi.Naming;
@@ -12,7 +15,10 @@ import java.rmi.registry.LocateRegistry;
 * Date: 2008-8-7 22:03:35 
 * 创建RMI注册表，启动RMI服务，并将远程对象注册到RMI注册表中。 
 */ 
-public class HelloServer { 
+public class HelloServer {
+
+    private static Logger logger = LoggerFactory.getLogger(HelloServer.class);
+
     public static void main(String args[]) throws java.rmi.AlreadyBoundException { 
 	
         try { 
@@ -27,16 +33,13 @@ public class HelloServer {
             Naming.bind("rmi://localhost:8888/RHello",rhello); 
 //            Naming.bind("//localhost:8888/RHello",rhello); 
 
-            System.out.println(">>>>>INFO:远程IHello对象绑定成功！"); 
+            logger.info(">>>>>INFO:远程IHello对象绑定成功！");
         } catch (RemoteException e) { 
-            System.out.println("创建远程对象发生异常！"); 
-            e.printStackTrace(); 
+            logger.error(e.getMessage(),e);
         } catch (AlreadyBoundException e) { 
-            System.out.println("发生重复绑定对象异常！"); 
-            e.printStackTrace(); 
+            logger.error(e.getMessage(),e);
         } catch (MalformedURLException e) { 
-            System.out.println("发生URL畸形异常！"); 
-            e.printStackTrace(); 
+            logger.error(e.getMessage(),e);
         } 
     } 
 }

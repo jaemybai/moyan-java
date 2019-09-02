@@ -1,4 +1,7 @@
 package com.moyan.example.http;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -12,6 +15,9 @@ import java.net.Socket;
  * @author <a href="mailto:hemingwang0902@126.com" mce_href="mailto:hemingwang0902@126.com">何明旺</a>
  */
 public class FetchHtmlBySocket {
+
+	private Logger logger = LoggerFactory.getLogger(FetchHtmlBySocket.class);
+
 	public static void main(String[] args) {
 		String url = "/hemingwang0902";
 		String host = "blog.csdn.net";
@@ -20,7 +26,7 @@ public class FetchHtmlBySocket {
 		url = "o/2017-03-27/doc-ifycsukm3847674.shtml";
 		host = "news.sina.com.cn";
 		String html = new FetchHtmlBySocket().htmlContent(new HtmlPage(host, url));
-//		System.out.println(html);
+//		logger.info(html);
 	}
 	
 	/**
@@ -62,10 +68,10 @@ public class FetchHtmlBySocket {
 			String line;
 			while ((line = reader.readLine()) != null) {
 //				html.append(line).append("/r/n");
-				System.out.println(line);
+				logger.info(line);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage(),e);
 		} finally {
 			try {
 				if (reader != null)
@@ -75,7 +81,7 @@ public class FetchHtmlBySocket {
 				if (socket != null)
 					socket.close();
 			} catch (IOException e) {
-				e.printStackTrace();
+				logger.error(e.getMessage(),e);
 			}
 		}
 	

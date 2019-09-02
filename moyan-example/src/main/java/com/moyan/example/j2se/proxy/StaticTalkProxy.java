@@ -1,4 +1,8 @@
 package com.moyan.example.j2se.proxy;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * 静态代理
  * 代理主题角色：内部包含对真实主题的引用，并且提供和真实主题角色相同的接口。
@@ -7,6 +11,8 @@ package com.moyan.example.j2se.proxy;
  * 
  */
 public class StaticTalkProxy implements ITalk {
+
+    private static Logger logger = LoggerFactory.getLogger(StaticTalkProxy.class);
 
     private ITalk talker;
 
@@ -25,7 +31,7 @@ public class StaticTalkProxy implements ITalk {
     }
 
     private void sing(String singname) {
-        System.out.println("唱歌：" + singname);
+        logger.info("唱歌：" + singname);
     }
 
 }

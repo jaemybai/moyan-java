@@ -1,5 +1,9 @@
 package com.moyan.example.j2se.swing;
 
+import com.moyan.example.j2se.base.ViolateTest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +17,9 @@ import javax.swing.*;
  *
  */
 public class SwingJDialog {
+
+	private static Logger logger = LoggerFactory.getLogger(ViolateTest.class);
+
 	public SwingJDialog(){
 		final JFrame jf=new JFrame("��������ʵ��");
 		// Some methods defined by Toolkit query the native operating system directly.
@@ -55,7 +62,7 @@ public class SwingJDialog {
 					}
 
 				});
-				System.out.println("OK");
+				logger.info("OK");
 
 				jd.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -65,10 +72,10 @@ public class SwingJDialog {
 		jb.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				new Dialog1().jd.setVisible(true);//�����Ի���
-				System.out.println("OK2");
+				logger.info("OK2");
 			}
 		});
-		System.out.println("OK3");
+		logger.info("OK3");
 	}
 
 	public static void main(String[] args){

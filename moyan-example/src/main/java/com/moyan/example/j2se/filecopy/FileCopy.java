@@ -1,4 +1,7 @@
 package com.moyan.example.j2se.filecopy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -23,13 +26,15 @@ import java.util.concurrent.TimeUnit;
  */
 public class FileCopy {
 
+	private static Logger logger = LoggerFactory.getLogger(FileCopy.class);
+
 	public static BlockingQueue<byte[]> queue = new ArrayBlockingQueue<byte[]>(10000);
 	public static void main(String[] args) {
 
 		ExecutorService service = new ThreadPoolExecutor(5, 20,
                 0L, TimeUnit.MILLISECONDS,
                 new LinkedBlockingQueue<Runnable>());
-		System.out.println("start..");
+		logger.info("start..");
 		service.execute(new ReceiveThread());
 		service.execute(new SendThread());
 		service.shutdown();
@@ -48,16 +53,16 @@ public class FileCopy {
 				 }
 				OutputStream out = new FileOutputStream(file);
 				int i=0;
-				System.out.println("start the ReceiveThread...");
+				logger.info("start the ReceiveThread...");
 				while(true) {
 					 bb = queue.poll();
 					 if(bb != null) {
-//						 System.out.println("ReceiveThread----"+Arrays.toString(bb));
-						 System.out.println("ReceiveThread----"+new String(bb));
+//						 logger.info("ReceiveThread----"+Arrays.toString(bb));
+						 logger.info("ReceiveThread----"+new String(bb));
 						 out.write(bb);
 					 }else {
 						 if(i>3) {
-							 System.out.println(i);
+							 logger.info("" + i);
 							 break;
 						 }
 						 Thread.sleep(2000);
@@ -67,11 +72,11 @@ public class FileCopy {
 				}
 				out.flush();
 				out.close();
-				System.out.println("end the ReceiveThread...");
+				logger.info("end the ReceiveThread...");
 
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error(e.getMessage(),e);
 			}
 		}
 	}
@@ -84,11 +89,11 @@ public class FileCopy {
 			try {	
 				File file = new File(filePath);
 				InputStream in = new FileInputStream(file);
-				System.out.println("start the SendThread...");
+				logger.info("start the SendThread...");
 				queue.put(filePath.getBytes());
 				while(true) {
-//					System.out.println("SendThread----"+Arrays.toString(bb));
-//					System.out.println("SendThread----"+new String(bb));
+//					logger.info("SendThread----"+Arrays.toString(bb));
+//					logger.info("SendThread----"+new String(bb));
 					byte[] bb = new byte[100];
 					if(in.read(bb) != -1 ) {
 						queue.put(bb);
@@ -98,11 +103,11 @@ public class FileCopy {
 					
 				}
 				in.close();
-				System.out.println("end the SendThread...");
+				logger.info("end the SendThread...");
 
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error(e.getMessage(),e);
 			}
 		}
 		
@@ -114,41 +119,41 @@ public class FileCopy {
 
 	static void test2() {
 		Timer time = new Timer();
-		System.out.println(1);
+		logger.info("" + 1);
 		
 		time.schedule(new TimerTask() {
 			@Override
 			public void run() {
-				System.out.println(1);
+				logger.info("" + 1);
 
 			}
 		}, 2);
-		System.out.println(2);
+		logger.info("" + 2);
 		time.scheduleAtFixedRate(new TimerTask() {
 
 			@Override
 			public void run() {
 				String str = new SimpleDateFormat("yyyyMMdd hh:mm:ss")
 						.format(new Date(System.currentTimeMillis()));
-				System.out.println(str);
+				logger.info(str);
 
 			}
 		}, 1000, 5000);
 	}
 
 	static void test1() {
-		System.out.println("start...");
+		logger.info("start...");
 		String str = new SimpleDateFormat("yyyyMMdd hh:mm:ss").format(new Date(
 				System.currentTimeMillis()));
 		for (long i = 0; i < 5000L; i++) {
-			System.out.println(i
+			logger.info(i
 					+ "\t"
 					+ new SimpleDateFormat("yyyyMMdd hh:mm:ss")
 							.format(new Date(System.currentTimeMillis())));
 		}
-		System.out.println("end...");
-		System.out.println(str);
-		System.out.println(new SimpleDateFormat("yyyyMMdd hh:mm:ss")
+		logger.info("end...");
+		logger.info(str);
+		logger.info(new SimpleDateFormat("yyyyMMdd hh:mm:ss")
 				.format(new Date(System.currentTimeMillis())));
 	}
 }

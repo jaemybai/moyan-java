@@ -1,11 +1,16 @@
 package com.moyan.example.j2se.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 public class DateUtil {
+
+	private static Logger logger = LoggerFactory.getLogger(DateUtil.class);
 
 	public static String dateFormat = "yyyy-MM-dd hh:mm:ss";
 
@@ -66,7 +71,7 @@ public class DateUtil {
 		try {
 			return dateFormat.parse(date).getTime();
 		} catch (ParseException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage(),e);
 		}
 		return -1L;
 	}
@@ -82,13 +87,13 @@ public class DateUtil {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(getDateBeforeN(25));
-		System.out.println(convertDate2Time(dateFormat, getDate(getDateBeforeN(25), dateFormat)));
-		System.out.println(convertTime2Date(dateFormat, getCurTime()));
-		System.out.println(getCurTime());
+		logger.info("" + getDateBeforeN(25));
+		logger.info("" + convertDate2Time(dateFormat, getDate(getDateBeforeN(25), dateFormat)));
+		logger.info("" + convertTime2Date(dateFormat, getCurTime()));
+		logger.info("" + getCurTime());
 		
-		System.out.println(Integer.MAX_VALUE);
-		System.out.println(Integer.MIN_VALUE);
+		logger.info(""+ Integer.MAX_VALUE);
+		logger.info("" + Integer.MIN_VALUE);
 
 
 	}

@@ -1,5 +1,9 @@
 package com.moyan.example.j2se.socket;
 
+import com.moyan.example.j2se.base.ViolateTest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -11,6 +15,8 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class ClientSocket {
+
+	private static Logger logger = LoggerFactory.getLogger(ViolateTest.class);
 
 	public static void main(String[] args) throws Exception {
 		
@@ -33,7 +39,7 @@ public class ClientSocket {
 			if(str == null) {
 				break;
 			}
-			System.out.println("响应："+str);
+			logger.info("响应："+str);
 		}
 		
 //		br.close();

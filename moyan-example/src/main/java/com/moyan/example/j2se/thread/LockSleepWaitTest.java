@@ -1,17 +1,23 @@
 package com.moyan.example.j2se.thread;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class LockSleepWaitTest {
 
+    private static Logger logger = LoggerFactory.getLogger(LockSleepWaitTest.class);
+
+
     final Lock lock = new ReentrantLock();
     public  void sleep1() throws InterruptedException  {
         try {
             lock.lock();
-            System.out.println("sleep1-start");
+            logger.info("sleep1-start");
             Thread.sleep(5);
-            System.out.println("sleep1-end");
+            logger.info("sleep1-end");
         }finally {
             lock.unlock();
         }
@@ -21,9 +27,9 @@ public class LockSleepWaitTest {
     public  void sleep2() throws InterruptedException  {
         try {
             lock.lock();
-            System.out.println("sleep2-start");
+            logger.info("sleep2-start");
             Thread.sleep(5);
-            System.out.println("sleep2-end");
+            logger.info("sleep2-end");
         }finally {
             lock.unlock();
         }
@@ -33,9 +39,9 @@ public class LockSleepWaitTest {
     public  void wait1() throws InterruptedException  {
         try {
             lock.lock();
-            System.out.println("wait1-start");
+            logger.info("wait1-start");
             lock.wait();
-            System.out.println("wait1-end");
+            logger.info("wait1-end");
         }finally {
             lock.unlock();
         }
@@ -45,9 +51,9 @@ public class LockSleepWaitTest {
     public  void wait2() throws InterruptedException  {
         try {
             lock.lock();
-            System.out.println("wait2-start");
+            logger.info("wait2-start");
             lock.notify();
-            System.out.println("wait2-end");
+            logger.info("wait2-end");
         }finally {
             lock.unlock();
         }
@@ -66,7 +72,7 @@ public class LockSleepWaitTest {
                 try {
                     syschronizeTest.wait1();
                 }catch (Exception e) {
-                    e.printStackTrace();
+                    logger.error(e.getMessage(),e);
                 }
             }
         }).start();
@@ -77,7 +83,7 @@ public class LockSleepWaitTest {
                 try {
                     syschronizeTest.wait2();
                 }catch (Exception e) {
-                    e.printStackTrace();
+                    logger.error(e.getMessage(),e);
                 }
             }
         }).start();
@@ -91,7 +97,7 @@ public class LockSleepWaitTest {
                 try {
                     syschronizeTest.sleep1();
                 }catch (Exception e) {
-                    e.printStackTrace();
+                    logger.error(e.getMessage(),e);
                 }
             }
         }).start();
@@ -102,7 +108,7 @@ public class LockSleepWaitTest {
                 try {
                     syschronizeTest.sleep2();
                 }catch (Exception e) {
-                    e.printStackTrace();
+                    logger.error(e.getMessage(),e);
                 }
             }
         }).start();

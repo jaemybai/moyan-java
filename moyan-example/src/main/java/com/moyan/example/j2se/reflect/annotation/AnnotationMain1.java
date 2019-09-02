@@ -1,24 +1,29 @@
 package com.moyan.example.j2se.reflect.annotation;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
 public class AnnotationMain1 {
-	
+
+	private static Logger logger = LoggerFactory.getLogger(AnnotationMain1.class);
+
 	public static void main(String[] args) throws Exception {
 		
 		AnnotationDto dto = new AnnotationDto();
-		System.out.println(dto);
+		logger.info("" + dto);
 
 		Class<?> clazz = getClass(dto);
 		Annotation[] annos = clazz.getDeclaredAnnotations();
-		System.out.println(annos);
+		logger.info("" + annos);
 		Field[] fields = getField(clazz);
 		
 		for(Field field :fields) {
 			setField(field, dto);
 		}
-		System.out.println(dto);
+		logger.info("" + dto);
 	}
 	
 	public static <T> Class<? extends Object> getClass(T t) {

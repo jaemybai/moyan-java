@@ -39,7 +39,7 @@ public class ClassLoaderTest {
 		Class<?> subClass2 = customClassLoader2.loadClass(subClassName3);
 		Object obj1 = clazz1.newInstance();
 //		Object field1 = getObj(clazz1, fieldStr, obj1);
-//		System.out.println(field1.getClass().getClassLoader());
+//		logger.info(field1.getClass().getClassLoader());
 		Method method = clazz1.getDeclaredMethod(methodStr, parClass1);
 		method.invoke(obj1, parClass2.newInstance());
 //		callMethod(clazz1, methodStr, obj1,parClass1.newInstance());

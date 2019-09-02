@@ -1,6 +1,11 @@
 package com.moyan.example.j2se.thread;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class ThreadLocalTest {
+
+	private static Logger logger = LoggerFactory.getLogger(ThreadLocalTest.class);
 
 	static class ResourceClass {
 
@@ -25,7 +30,7 @@ public class ThreadLocalTest {
 
 	static class B {
 		public void display() {
-			System.out.println(ResourceClass.RESOURCE_1.get()
+			logger.info(ResourceClass.RESOURCE_1.get()
 						+ ":" + ResourceClass.RESOURCE_2.get());
 		}
 	}

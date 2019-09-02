@@ -193,7 +193,7 @@ public class MainFrame extends JFrame {
 //		UIManager.setLookAndFeel(lookAndFeel);
 		lookAndFeel = UIManager.getSystemLookAndFeelClassName();
 		//com.sun.java.swing.plaf.windows.WindowsLookAndFeel
-		System.out.println(lookAndFeel);
+		logger.info(lookAndFeel);
 	
 //		SwingUtilities.updateComponentTreeUI(frame);
 		Font font = new Font("dsa", Font.PLAIN, 18);
@@ -203,7 +203,7 @@ public class MainFrame extends JFrame {
              keys.hasMoreElements(); ) {
 				  Object key = keys.nextElement();
 				  Object value = UIManager.get(key);
-				  System.out.println(key+"\t"+value);
+				  logger.info(key+"\t"+value);
 				  if(value instanceof FontUIResource) {
 					  UIManager.put(key, fontRes);
 				  }

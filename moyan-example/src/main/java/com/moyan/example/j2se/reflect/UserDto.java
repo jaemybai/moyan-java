@@ -1,19 +1,24 @@
 package com.moyan.example.j2se.reflect;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.lang.reflect.Field;
 
 
 public class UserDto {
-	
+
+	private static Logger logger = LoggerFactory.getLogger(UserDto.class);
+
 	public static void main(String[] args) throws Exception {
 		
 		Class clazz = Class.forName("com.xlbai.base.UserDto");
 		Object obj = clazz.newInstance();
-		System.out.println(obj);
+		logger.info("" + obj);
 		Field field = clazz.getDeclaredField("id");
 		field.setAccessible(true);
 		field.set(obj, 21);
-		System.out.println(obj);
+		logger.info("" + obj);
 	}
 
 	@Override
@@ -88,7 +93,7 @@ public class UserDto {
 	}
 
 	public void setId(int id) {
-		System.out.println("setid...");
+		logger.info("setid...");
 		this.id = id;
 	}
 

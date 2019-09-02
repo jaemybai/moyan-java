@@ -1,8 +1,12 @@
 package com.moyan.example.j2se.base;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class ParentClass {
 
-	
+	private static Logger logger = LoggerFactory.getLogger(ViolateTest.class);
+
 	private String desc1 = "ParentClass1";
 	
 	protected String desc2 = "ParentClass2";
@@ -17,7 +21,7 @@ public class ParentClass {
 		StackTraceElement[] elements = Thread.currentThread().getStackTrace();
 		StackTraceElement element = elements[elements.length-2];
 		
-		System.out.println(
+		logger.info(
 				this.getClass().getSimpleName() + element.getMethodName() 
 				+ ".ParentClass2: " +desc2) ;
 	}

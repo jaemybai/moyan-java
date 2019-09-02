@@ -1,4 +1,7 @@
 package com.moyan.example.j2se.swing;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -6,6 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JToolBar;
 public class TestJOptionPane implements ActionListener{
+
+    private static Logger logger = LoggerFactory.getLogger(TestJOptionPane.class);
+
     private JFrame jf = new JFrame("标准对话框测试");
     /**
      * @param args
@@ -42,7 +48,7 @@ public class TestJOptionPane implements ActionListener{
             int result = JOptionPane.showConfirmDialog(null, 
                     "推出前是否保存程序？");
             if(result == JOptionPane.YES_OPTION){
-                System.out.println("保存程序---");
+                logger.info("保存程序---");
                 System.exit(0);
             }
             else if(result == JOptionPane.NO_OPTION){
@@ -52,7 +58,7 @@ public class TestJOptionPane implements ActionListener{
         else if(s.equals("退出确认2")){
             int result = JOptionPane.showConfirmDialog(null, "退出前是否保存程序？");
             if(result == JOptionPane.YES_OPTION){
-                System.out.println("保存程序---");
+                logger.info("保存程序---");
                 System.exit(0);
             }
             else if(result == JOptionPane.NO_OPTION){
@@ -65,13 +71,13 @@ public class TestJOptionPane implements ActionListener{
                     "本操作可能导致数据丢失","Warning", JOptionPane.DEFAULT_OPTION,
                     JOptionPane.WARNING_MESSAGE, null, options, options[0]);
             if(result == 0){
-                System.out.println("继续操作---");
+                logger.info("继续操作---");
             }
         }
         else if(s.equals("输入")){
             String name = JOptionPane.showInputDialog("请输入您的姓名：");
             if(name != null){
-                System.out.println("姓名：" + name);
+                logger.info("姓名：" + name);
             }
         }
         else if(s.equals("选择")){
@@ -81,7 +87,7 @@ public class TestJOptionPane implements ActionListener{
                     possibleValues, possibleValues[0]);
             String choose = (String)selectedValue;
             if(choose != null){
-                System.out.println("你选择的是："+ choose);
+                logger.info("你选择的是："+ choose);
             }
         }
     }

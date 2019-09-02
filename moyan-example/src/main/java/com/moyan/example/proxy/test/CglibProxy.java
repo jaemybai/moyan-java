@@ -2,9 +2,12 @@ package com.moyan.example.proxy.test;
 
 import java.lang.reflect.Method;
 
+import com.moyan.example.j2se.base.ViolateTest;
 import org.mockito.cglib.proxy.Enhancer;
 import org.mockito.cglib.proxy.MethodInterceptor;
 import org.mockito.cglib.proxy.MethodProxy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 使用cglib动态代理
@@ -13,6 +16,8 @@ import org.mockito.cglib.proxy.MethodProxy;
  * 
  */
 public class CglibProxy implements MethodInterceptor {
+
+    private static Logger logger = LoggerFactory.getLogger(ViolateTest.class);
 
     private Object target;
 
@@ -35,9 +40,9 @@ public class CglibProxy implements MethodInterceptor {
     @Override
     public Object intercept(Object proxy, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
         Object result = null;
-        System.out.println("事物开始");
+        logger.info("事物开始");
         result = methodProxy.invokeSuper(proxy, args);
-        System.out.println("事物结束");
+        logger.info("事物结束");
         return result;
     }
 

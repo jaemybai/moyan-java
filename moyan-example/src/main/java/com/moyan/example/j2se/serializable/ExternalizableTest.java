@@ -1,5 +1,8 @@
 package com.moyan.example.j2se.serializable;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.*;
 
 /**
@@ -10,6 +13,8 @@ import java.io.*;
  *
  */
 public class ExternalizableTest implements Externalizable {
+
+    private static Logger logger = LoggerFactory.getLogger(ExternalizableTest.class);
 
     private  String content = "是的，我将会被序列化，不管我是否被transient关键字修饰";
     private String user = "user";
@@ -48,9 +53,9 @@ public class ExternalizableTest implements Externalizable {
                 "test")));
         Object oo = in.readObject();
         ExternalizableTest et2 = (ExternalizableTest) oo;
-        System.out.println(et2.content);
-        System.out.println(et2.user);
-        System.out.println(et2.password);
+        logger.info(et2.content);
+        logger.info(et2.user);
+        logger.info("" + et2.password);
 
         out.close();
         in.close();

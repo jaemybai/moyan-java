@@ -7,9 +7,13 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+import com.moyan.example.j2se.base.ViolateTest;
 import com.sun.org.apache.xml.internal.utils.ObjectPool;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ExecutorsTest {
+	private static Logger logger = LoggerFactory.getLogger(ViolateTest.class);
 
     static Operation operation = new Operation();
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
@@ -23,9 +27,9 @@ public class ExecutorsTest {
 //		executorService.execute(getRunnable());
 //		future = executorService.submit(getRunnable(),operation);
 		future = executorService.submit(getCallable());
-		System.out.println("wait1.....");
-//		System.out.println(future.get());
-		System.out.println("wait2.....");
+		logger.info("wait1.....");
+//		logger.info(future.get());
+		logger.info("wait2.....");
 		executorService.shutdown();
 	}
 	
@@ -35,7 +39,7 @@ public class ExecutorsTest {
 			int count = 1;
 			@Override
 			public void run() {
-				System.out.println(count + "test...");
+				logger.info(count + "test...");
 				operation.setOperation("execute getRunnable....");
 				count++;
 				
@@ -50,7 +54,7 @@ public class ExecutorsTest {
 			int count = 0;
 			@Override
 			public Operation call() throws Exception {
-				System.out.println(count + "test.....");
+				logger.info(count + "test.....");
 				operation.setOperation("execute getCallable....");
 				count++;
 				Thread.sleep(2000);

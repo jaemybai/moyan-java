@@ -1,17 +1,22 @@
 package com.moyan.example.j2se.sort;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Arrays;
 
 public class SortTest {
 
+    private static Logger logger = LoggerFactory.getLogger(SortTest.class);
+
     public static void main(String[] args) {
         int[] array = new int[]{1,4,22,3,2,2,3,4,32,2,1,111,22,33,333,22,11};
-        System.out.println(array.length);
-        System.out.println(Arrays.toString(array));
+        logger.info("" + array.length);
+        logger.info(Arrays.toString(array));
         quickSort(array);
 //        bubbleSort(array);
-        System.out.println(array.length);
-        System.out.println(Arrays.toString(array));
+        logger.info("" + array.length);
+        logger.info(Arrays.toString(array));
     }
 
     public static void bubbleSort(int[] array) {

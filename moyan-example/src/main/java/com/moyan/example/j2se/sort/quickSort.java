@@ -1,5 +1,8 @@
 package com.moyan.example.j2se.sort;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Arrays;
 
 /**
@@ -11,6 +14,8 @@ import java.util.Arrays;
  */
 public class quickSort {
 
+	private static Logger logger = LoggerFactory.getLogger(quickSort.class);
+
 	int a[] = { 49, 38, 65, 97, 76, 13, 27, 49};
 
 	public static void main(String[] args) {
@@ -18,10 +23,10 @@ public class quickSort {
 	}
 	public quickSort() {
 
-		System.out.println(Arrays.toString(a));
+		logger.info(Arrays.toString(a));
 		quick(a);
-		System.out.println("------------------");
-		System.out.println(Arrays.toString(a));
+		logger.info("------------------");
+		logger.info(Arrays.toString(a));
 
 	}
 

@@ -1,7 +1,12 @@
 package com.moyan.example.j2se.common;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class CharByte {
+
+	private static Logger logger = LoggerFactory.getLogger(CharByte.class);
 
 	public static void main(String[] args) throws Exception {
 		
@@ -11,14 +16,14 @@ public class CharByte {
 			System.out.print(bb);
 			System.out.print("\t");
 		}
-		System.out.println(a.getBytes().length);
+		logger.info("" + a.getBytes().length);
 		
 		for(char cc: a.toCharArray()) {
 			System.out.print(cc);
 			System.out.print("byte:"+(byte)cc+"int:"+(int)cc);
 			System.out.print("\t");
 		}
-		System.out.println(a.toCharArray().length);
+		logger.info("" + a.toCharArray().length);
 		
 		Class<?> cla = Class.forName("java.lang.StringCoding");
 		cla.newInstance();

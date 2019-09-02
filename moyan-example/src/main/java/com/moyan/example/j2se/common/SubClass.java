@@ -1,42 +1,47 @@
 package com.moyan.example.j2se.common;
 
 
+import com.moyan.example.j2se.base.ViolateTest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class SubClass extends ParentClass{
+	private static Logger logger = LoggerFactory.getLogger(ViolateTest.class);
 
 	public static String parentStaticAttrA = "subStaticAttrA";
 	public String parentAttrA = "subAttrA";
 	static {
-		System.out.println("sub static block 1");
+		logger.info("sub static block 1");
 	}
 	
 	static {
-		System.out.println("sub static block 2");
+		logger.info("sub static block 2");
 	}
 	
 	{
-		System.out.println("sub block 1");
+		logger.info("sub block 1");
 	}
 	
 	{
-		System.out.println("sub block 2");
+		logger.info("sub block 2");
 	}
 	
 	public SubClass() {
-		System.out.println("sub construct without params");
+		logger.info("sub construct without params");
 	}
 	
 	public SubClass(String parentAttrA) {
 //		super(parentAttrA);
 		this.parentAttrA = parentAttrA;
-		System.out.println("sub construct with params:"+parentAttrA);
+		logger.info("sub construct with params:"+parentAttrA);
 	}
 	
 	public static void main(String[] args) {
-		System.out.println("1SubClass.parentStaticAttrA:"+SubClass.parentStaticAttrA);
+		logger.info("1SubClass.parentStaticAttrA:"+SubClass.parentStaticAttrA);
 		SubClass subClass1 = new SubClass();
-		System.out.println("2subClass1.parentAttrA:"+subClass1.parentAttrA);
+		logger.info("2subClass1.parentAttrA:"+subClass1.parentAttrA);
 		SubClass subClass2 = new SubClass("2");
-		System.out.println("3subClass2.parentAttrA:"+subClass2.parentAttrA);
+		logger.info("3subClass2.parentAttrA:"+subClass2.parentAttrA);
 
 	}
 }

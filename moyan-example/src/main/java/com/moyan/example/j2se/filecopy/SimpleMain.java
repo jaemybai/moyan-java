@@ -1,5 +1,8 @@
 package com.moyan.example.j2se.filecopy;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -12,6 +15,8 @@ import java.io.OutputStream;
  *
  */
 public class SimpleMain {
+
+	private static Logger logger = LoggerFactory.getLogger(SimpleMain.class);
 
 	public static void main(String[] args) throws Exception {
 		
@@ -57,7 +62,6 @@ public class SimpleMain {
 			endTime = System.currentTimeMillis();
 			System.out.printf("it costs [%s] seconds\n that the file[%s] has copy to the dir[%s]",
 					(endTime-startTime)/1000,oneFile,desDir);
-			System.out.println();
 			totalTime += (endTime-startTime)/1000;
 			
 			if(needDelete) {
@@ -67,17 +71,15 @@ public class SimpleMain {
 				else {
 					System.out.printf("the file[%s] failed to delete", oneFile.getAbsolutePath());
 				}
-				System.out.println();
 			}
 			else {
-				System.out.println("the file no need to be deleted");
+				logger.info("the file no need to be deleted");
 			}
 			if(onlyOne) {
 				break;
 			}
 		}
 		System.out.printf("it cost total time is {%s} seconds ",totalTime);
-		System.out.println();
 	}
 	
 	

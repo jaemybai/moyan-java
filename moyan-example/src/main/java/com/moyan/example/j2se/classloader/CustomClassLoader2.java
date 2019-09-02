@@ -47,15 +47,15 @@ public class CustomClassLoader2 extends ClassLoader{
 			 byte[] classData  = outputStream.toByteArray();
 			return defineClass(name, classData, 0, classData.length);
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage(),e);
 		} catch(IOException e ) {
-			e.printStackTrace();
+			logger.error(e.getMessage(),e);
 		}finally {
 			try {
 				outputStream.close();
 				inputStream.close();
 			}catch(Exception e) {
-				e.printStackTrace();
+				logger.error(e.getMessage(),e);
 				throw new ClassNotFoundException();
 			}
 		}

@@ -1,10 +1,16 @@
 package com.moyan.example.nio;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.FileInputStream;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
 public class NioRead {
+
+	private static Logger logger = LoggerFactory.getLogger(NioRead.class);
+
 	static public void main(String args[]) throws Exception {
 		FileInputStream fin = new FileInputStream("test.log");
 
@@ -22,11 +28,11 @@ public class NioRead {
 		while (true) {
 			readCount = fc.read(buffer);
 			if (readCount <= 0) {
-				System.out.println("end------------readCount:" + readCount);
+				logger.info("end------------readCount:" + readCount);
 				break;
 			}
 			cc++;
-			System.out.println("readCount: " + readCount);
+			logger.info("readCount: " + readCount);
 			buffer.flip();
 			while (buffer.remaining() > 0) {
 				byte b = buffer.get();
@@ -35,7 +41,7 @@ public class NioRead {
 			}
 			buffer.clear();
 		}
-		System.out.println("cc:" + cc);
+		logger.info("cc:" + cc);
 		fin.close();
 	}
 }

@@ -1,6 +1,10 @@
 package com.moyan.example.j2se.swing;
 
 
+import com.moyan.example.j2se.base.ViolateTest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -10,6 +14,9 @@ import java.awt.event.*;
  *
  */
 public class Hello{
+
+    private static Logger logger = LoggerFactory.getLogger(ViolateTest.class);
+
     public static void main(String args[])throws Exception{
         NewFrame frame1 = new NewFrame();
         frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//һ��Ҫ���ùر�
@@ -154,9 +161,12 @@ class NewFrame extends JFrame{
         return box;
     }
     private class comboxListener implements ActionListener{
+
+        private Logger logger = LoggerFactory.getLogger(ViolateTest.class);
+
         public void actionPerformed(ActionEvent e){
             Object o = e.getSource();
-            System.out.println(o.toString());
+            logger.info("" + o.toString());
         }
     }
     /**
@@ -193,8 +203,10 @@ class NewFrame extends JFrame{
      *
      */
     private class HelloButton implements ActionListener{
+        private Logger logger = LoggerFactory.getLogger(ViolateTest.class);
+
         public void actionPerformed(ActionEvent e){
-            System.out.println("Hello world!");
+            logger.info("Hello world!");
         }
     }
     /**

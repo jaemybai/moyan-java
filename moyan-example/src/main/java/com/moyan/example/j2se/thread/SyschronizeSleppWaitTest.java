@@ -1,29 +1,34 @@
 package com.moyan.example.j2se.thread;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class SyschronizeSleppWaitTest {
 
+    private static Logger logger = LoggerFactory.getLogger(SyschronizeSleppWaitTest.class);
+
     public synchronized void sleep1() throws InterruptedException  {
-        System.out.println("sleep1-start");
+        logger.info("sleep1-start");
         Thread.sleep(5);
-        System.out.println("sleep1-end");
+        logger.info("sleep1-end");
     }
 
     public synchronized void sleep2() throws InterruptedException  {
-        System.out.println("sleep2-start");
+        logger.info("sleep2-start");
         Thread.sleep(5);
-        System.out.println("sleep2-end");
+        logger.info("sleep2-end");
     }
 
     public synchronized void wait1() throws InterruptedException  {
-        System.out.println("wait1-start");
+        logger.info("wait1-start");
         this.wait();
-        System.out.println("wait1-end");
+        logger.info("wait1-end");
     }
 
     public synchronized void wait2() throws InterruptedException  {
-        System.out.println("wait2-start");
+        logger.info("wait2-start");
         this.notifyAll();
-        System.out.println("wait2-end");
+        logger.info("wait2-end");
     }
 
     public static void main(String[] args) throws Exception{
@@ -38,7 +43,7 @@ public class SyschronizeSleppWaitTest {
                 try {
                     syschronizeTest.wait1();
                 }catch (Exception e) {
-                    e.printStackTrace();
+                    logger.error(e.getMessage(),e);
                 }
             }
         }).start();
@@ -49,7 +54,7 @@ public class SyschronizeSleppWaitTest {
                 try {
                     syschronizeTest.wait2();
                 }catch (Exception e) {
-                    e.printStackTrace();
+                    logger.error(e.getMessage(),e);
                 }
             }
         }).start();
@@ -63,7 +68,7 @@ public class SyschronizeSleppWaitTest {
                 try {
                     syschronizeTest.sleep1();
                 }catch (Exception e) {
-                    e.printStackTrace();
+                    logger.error(e.getMessage(),e);
                 }
             }
         }).start();
@@ -74,7 +79,7 @@ public class SyschronizeSleppWaitTest {
                 try {
                     syschronizeTest.sleep2();
                 }catch (Exception e) {
-                    e.printStackTrace();
+                    logger.error(e.getMessage(),e);
                 }
             }
         }).start();

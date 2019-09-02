@@ -1,6 +1,13 @@
 package com.moyan.example.j2se.thread;
-  
-public class TestNum {  
+
+import com.moyan.example.j2se.base.ViolateTest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class TestNum {
+
+    private static Logger logger = LoggerFactory.getLogger(ViolateTest.class);
+
     // ①通过匿名内部类覆盖ThreadLocal的initialValue()方法，指定初始值  
     private static ThreadLocal<Integer> seqNum = new ThreadLocal<Integer>() {  
         public Integer initialValue() {  
@@ -35,7 +42,7 @@ public class TestNum {
         public void run() {  
             for (int i = 0; i < 3; i++) {  
                 // ④每个线程打出3个序列值  
-                System.out.println("thread[" + Thread.currentThread().getName() + "] --> sn["  
+                logger.info("thread[" + Thread.currentThread().getName() + "] --> sn["
                          + sn.getNextNum() + "]");  
             }  
         }  

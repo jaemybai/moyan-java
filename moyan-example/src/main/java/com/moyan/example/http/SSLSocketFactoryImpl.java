@@ -31,8 +31,13 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
 import org.apache.http.protocol.HTTP;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SSLSocketFactoryImpl extends SSLSocketFactory {
+
+	private static Logger logger = LoggerFactory.getLogger(SSLSocketFactoryImpl.class);
+
 	/**
 	 * @Fields sslContext
 	 * @Description: Field Description
@@ -175,7 +180,7 @@ public class SSLSocketFactoryImpl extends SSLSocketFactory {
 			SchemeRegistry sr = ccm.getSchemeRegistry();
 			sr.register(new Scheme("https", 443, ssf));
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage(),e);
 		}
 
 		String httpGetUrl = "";

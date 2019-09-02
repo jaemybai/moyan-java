@@ -1,31 +1,36 @@
 package com.moyan.example.j2se.common;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class ParentClass {
+
+	private static Logger logger = LoggerFactory.getLogger(ParentClass.class);
 
 	public static String parentStaticAttrA = "parentStaticAttrA";
 	public String parentAttrA = "parentAttrA";
 	static {
-		System.out.println("parent static block 1");
+		logger.info("parent static block 1");
 	}
 	
 	static {
-		System.out.println("parent static block 2");
+		logger.info("parent static block 2");
 	}
 	
 	{
-		System.out.println("parent block 1");
+		logger.info("parent block 1");
 	}
 	
 	{
-		System.out.println("parent block 2");
+		logger.info("parent block 2");
 	}
 	
 	public ParentClass() {
-		System.out.println("parent construct without params");
+		logger.info("parent construct without params");
 	}
 	
 	public ParentClass(String parentAttrA) {
 		this.parentAttrA = parentAttrA;
-		System.out.println("parent construct with params:"+parentAttrA);
+		logger.info("parent construct with params:"+parentAttrA);
 	}
 }

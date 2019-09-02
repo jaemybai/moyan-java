@@ -20,9 +20,13 @@ import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 class HttpsClient extends DefaultHttpClient {
-	
+
+	private static Logger logger = LoggerFactory.getLogger(HttpsClient.class);
+
 	public static void main(String[] args) throws Exception {
 		String url = "http://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.0/httpclient-4.0.jar";
 		url = "https://github.com/";
@@ -56,19 +60,19 @@ class HttpsClient extends DefaultHttpClient {
 			@Override
 			public void checkClientTrusted(X509Certificate[] chain,
 					String authType) {
-				System.out.println("checkClientTrusted1");
+				logger.info("checkClientTrusted1");
 			}
 
 			@Override
 			public void checkServerTrusted(X509Certificate[] chain,
 					String authType) {
-				System.out.println("checkServerTrusted2");
+				logger.info("checkServerTrusted2");
 
 			}
 
 			@Override
 			public X509Certificate[] getAcceptedIssuers() {
-				System.out.println("X509Certificate3");
+				logger.info("X509Certificate3");
 				return null;
 			}
 		};

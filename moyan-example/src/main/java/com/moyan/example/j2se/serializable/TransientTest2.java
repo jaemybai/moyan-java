@@ -1,4 +1,7 @@
 package com.moyan.example.j2se.serializable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -15,15 +18,17 @@ import java.io.Serializable;
  * @date  2013-10-15
  */
 public class TransientTest2 {
-    
+
+    private static Logger logger = LoggerFactory.getLogger(TransientTest2.class);
+
     public static void main(String[] args) {
         
         User user = new User();
         user.setUsername("Alexia");
         user.setPasswd("123456");
         
-        System.out.println("read before Serializable: ");
-        System.out.println("username: " + user.getUsername());
+        logger.info("read before Serializable: ");
+        logger.info("username: " + user.getUsername());
         System.err.println("password: " + user.getPasswd());
         
         try {
@@ -33,9 +38,9 @@ public class TransientTest2 {
             os.flush();
             os.close();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(),e);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(),e);
         }
         try {
             // 在反序列化之前改变username的值
@@ -46,16 +51,16 @@ public class TransientTest2 {
             user = (User) is.readObject(); // 从流中读取User的数据
             is.close();
             
-            System.out.println("\nread after Serializable: ");
-            System.out.println("username: " + user.getUsername());
+            logger.info("\nread after Serializable: ");
+            logger.info("username: " + user.getUsername());
             System.err.println("password: " + user.getPasswd());
             
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(),e);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(),e);
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(),e);
         }
     }
     

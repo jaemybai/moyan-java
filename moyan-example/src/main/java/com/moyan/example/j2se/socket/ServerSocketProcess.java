@@ -1,5 +1,8 @@
 package com.moyan.example.j2se.socket;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -10,6 +13,8 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 
 public class ServerSocketProcess extends Thread{
+
+	private static Logger logger = LoggerFactory.getLogger(ServerSocketProcess.class);
 
 	private Socket socket;
 	private InputStream inputStream;
@@ -32,22 +37,22 @@ public class ServerSocketProcess extends Thread{
 		try {
 			inputStream = socket.getInputStream();
 			outputStream = socket.getOutputStream();
-			System.out.println(Thread.currentThread().getName()+":接受来自"+socket.getInetAddress());
+			logger.info(Thread.currentThread().getName()+":接受来自"+socket.getInetAddress());
 			BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
 			BufferedWriter bw  = new BufferedWriter(new OutputStreamWriter(outputStream));
 			while(true) {
-				System.out.println("start1");
+				logger.info("start1");
 				String str = br.readLine();
-				System.out.println("start2");
+				logger.info("start2");
 
 				if(str == null) {
-					System.out.println(Thread.currentThread().getName()+":通信结束来自"+socket.getInetAddress());
+					logger.info(Thread.currentThread().getName()+":通信结束来自"+socket.getInetAddress());
 					break;
 				}
-				System.out.println(Thread.currentThread().getName()+
+				logger.info(Thread.currentThread().getName()+
 						":接受来自"+socket.getInetAddress()+"消息内容："+str);
 				bw.write("接收完成{内容}："+str+"来自"+socket.getInetAddress());
-				System.out.println("end");
+				logger.info("end");
 
 			}
 //			br.close();
@@ -58,7 +63,7 @@ public class ServerSocketProcess extends Thread{
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error(e.getMessage(),e);
 		}
 		
 	}

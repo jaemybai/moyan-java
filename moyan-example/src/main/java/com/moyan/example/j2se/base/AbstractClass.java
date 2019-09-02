@@ -1,7 +1,11 @@
 package com.moyan.example.j2se.base;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public abstract class AbstractClass {
 
+	private static Logger logger = LoggerFactory.getLogger(AbstractClass.class);
 	public AbstractClass(){
 		
 	}
@@ -12,6 +16,6 @@ public abstract class AbstractClass {
 		abstract void test1() ;
 		
 		void test2() {
-			System.out.println("AbstractClass.test2-abstractA: " + abstractA);
+			logger.info("AbstractClass.test2-abstractA: " + abstractA);
 		}
 }

@@ -1,5 +1,8 @@
 package com.moyan.example.j2se.sort;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Arrays;
 
 /**
@@ -11,10 +14,12 @@ import java.util.Arrays;
  */
 public class MaoPaoSort {
 
+	private static Logger logger = LoggerFactory.getLogger(MaoPaoSort.class);
+
 	public static void main(String[] args) {
 
 			sortFromFirst();
-			System.out.println("=================");
+			logger.info("=================");
 			sortFromLast();
 	}
 
@@ -24,7 +29,7 @@ public class MaoPaoSort {
 	public static void sortFromFirst() {
 		int[] src = new int[] { 1, 11, 2, 44, 5, 66, 8 };
 //		 int score[] = {67, 69, 75, 87, 89, 90, 99, 100};
-		System.out.println(Arrays.toString(src));
+		logger.info(Arrays.toString(src));
 		for (int i = 0; i < src.length; i++) {
 
 			for (int j = i + 1; j < src.length; j++) {
@@ -36,7 +41,7 @@ public class MaoPaoSort {
 				}
 			}
 		}
-		System.out.println(Arrays.toString(src));
+		logger.info(Arrays.toString(src));
 	}
 	
 	/**
@@ -46,7 +51,7 @@ public class MaoPaoSort {
 	public static void sortFromLast() {
 		int[] src = new int[] { 1, 11, 2, 44, 5, 66, 8 };
 
-		System.out.println(Arrays.toString(src));
+		logger.info(Arrays.toString(src));
 		for (int i = 0; i < src.length; i++) {
 
 			for (int j = 0; j < src.length-i-1; j++) {
@@ -58,6 +63,6 @@ public class MaoPaoSort {
 				}
 			}
 		}
-		System.out.println(Arrays.toString(src));
+		logger.info(Arrays.toString(src));
 	}
 }

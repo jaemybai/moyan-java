@@ -1,6 +1,12 @@
 package com.moyan.example.j2se.thread;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class VolatileTest {
+
+	private static Logger logger = LoggerFactory.getLogger(VolatileTest.class);
+
 	static class MyObject {
 		static volatile int mycount = 0;
 	}
@@ -17,7 +23,7 @@ public class VolatileTest {
 			main1(args);
 		}
 		end = System.currentTimeMillis();
-		System.out.println("cost:" + (end-start));
+		logger.info("cost:" + (end-start));
 	}
 	public static void main1(String[] args) {
 
@@ -36,18 +42,18 @@ public class VolatileTest {
 			Thread.sleep(2);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error(e.getMessage(),e);
 		}
 
 //		 Runtime.getRuntime().addShutdownHook(new Thread(){
 //	    	  
 //	    	  public void run() {
-//	    		  System.out.println("运行结果:Counter.count=" + MyObject.mycount);
+//	    		  logger.info("运行结果:Counter.count=" + MyObject.mycount);
 //	      }
 //	      });
 		
 		 while(Thread.activeCount()>1)  //保证前面的线程都执行完
 	            Thread.yield();
-		 System.out.println("运行结果:Counter.count=" + MyObject.mycount);
+		 logger.info("运行结果:Counter.count=" + MyObject.mycount);
 	}
 }

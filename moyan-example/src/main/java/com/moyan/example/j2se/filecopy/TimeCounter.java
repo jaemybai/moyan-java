@@ -40,15 +40,15 @@ public class TimeCounter {
 	}
 	public long getCostTime() {
 		
-//		System.out.println("get");
+//		logger.info("get");
 		synchronized (this) {
 //			try {
-//				System.out.println("getbefore");
+//				logger.info("getbefore");
 //				Thread.sleep(5000);
-//				System.out.println("getafter");
+//				logger.info("getafter");
 //			} catch (InterruptedException e) {
 //				// TODO Auto-generated catch block
-//				e.printStackTrace();
+//				logger.error(e.getMessage(),e)
 //			}
 			return costTime;
 		}
@@ -56,16 +56,16 @@ public class TimeCounter {
 
 	public void addCostTime(long costTime) {
 		
-//		System.out.println("add");
+//		logger.info("add");
 		synchronized (this) {
 //			try {
-//				System.out.println("addbefore");
+//				logger.info("addbefore");
 //				Thread.sleep(5000);
-//				System.out.println("addafter");
+//				logger.info("addafter");
 //
 //			} catch (InterruptedException e) {
 //				// TODO Auto-generated catch block
-//				e.printStackTrace();
+//				logger.error(e.getMessage(),e)
 //			}
 			this.costTime = getCostTime() + costTime;
 		}

@@ -1,5 +1,8 @@
 package com.moyan.example.j2se.proxy;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -11,6 +14,8 @@ import java.lang.reflect.Proxy;
  * 
  */
 public class DynamicProxy implements InvocationHandler {
+
+    private static Logger logger = LoggerFactory.getLogger(DynamicProxy.class);
 
     /** 需要代理的目标类 */
     private Object target;
@@ -38,12 +43,12 @@ public class DynamicProxy implements InvocationHandler {
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         Object result = null;
         // 切面之前执行
-        System.out.println("切面之前执行");
+        logger.info("切面之前执行");
         // 执行业务
-       System.out.println( method.getName());
+       logger.info( method.getName());
         result = method.invoke(target, args);
         // 切面之后执行
-        System.out.println("切面之后执行");
+        logger.info("切面之后执行");
         return result;
     }
 

@@ -1,6 +1,12 @@
 package com.moyan.example.j2se.thread;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Counter {
- 
+
+    private static Logger logger = LoggerFactory.getLogger(Counter.class);
+
     public static int count = 0;
  
     public static void inc() {
@@ -32,7 +38,7 @@ public class Counter {
       Runtime.getRuntime().addShutdownHook(new Thread(){
     	  
     	  public void run() {
-    		  System.out.println("运行结果:Counter.count=" + Counter.count);
+    		  logger.info("运行结果:Counter.count=" + Counter.count);
       }
       });
     }

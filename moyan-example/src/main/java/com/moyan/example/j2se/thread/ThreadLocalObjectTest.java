@@ -1,6 +1,11 @@
 package com.moyan.example.j2se.thread;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class ThreadLocalObjectTest {
+
+	private static Logger logger = LoggerFactory.getLogger(ThreadLocalObjectTest.class);
 
 	public static  final ThreadLocal<ThreadLocalObjectTest> threadLocal =
 			new ThreadLocal<ThreadLocalObjectTest>();
@@ -16,7 +21,7 @@ public class ThreadLocalObjectTest {
 //					threadLocal.set(localObjectTest);
 //					ThreadLocalObjectTest test = threadLocal.get();
 					localObjectTest.i = localObjectTest.i + 1;
-					System.out.println(this.getName() + "_" + localObjectTest.i);
+					logger.info(this.getName() + "_" + localObjectTest.i);
 				}finally {
 
 				}

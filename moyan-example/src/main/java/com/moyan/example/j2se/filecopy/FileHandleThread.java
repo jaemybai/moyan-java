@@ -85,7 +85,7 @@ public class FileHandleThread extends Thread{
 			counter.addCostTime((endTime - startTime)/1000);
 			counter.addFileSize(size);
 		}catch(Exception e) {
-			e.printStackTrace();
+			log.error(e.getMessage(),e);
 		}
 	}
 	

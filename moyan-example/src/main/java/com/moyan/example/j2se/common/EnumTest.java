@@ -1,7 +1,11 @@
 package com.moyan.example.j2se.common;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public enum EnumTest {
-	
+
+
 	TEST("1"),
 	TEST1("2"),
 	TEST2("2"),
@@ -9,7 +13,8 @@ public enum EnumTest {
 	TEST4("2");
 	
 	private String value = "";
-	
+	private static Logger logger = LoggerFactory.getLogger(EnumTest.class);
+
 	private EnumTest(String value) {
 		this.value = value;
 	}
@@ -20,7 +25,7 @@ public enum EnumTest {
 	
 	public static void main(String[] args) {
 		EnumTest a= TEST;
-		System.out.println(a.getValue());
+		logger.info(a.getValue());
 	}
 	
 

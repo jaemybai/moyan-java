@@ -1,4 +1,9 @@
 package com.moyan.example.j2se.proxy;
+
+import com.moyan.example.j2se.base.ViolateTest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * 真实主题角色：定义真实的对象。
  * 
@@ -6,6 +11,7 @@ package com.moyan.example.j2se.proxy;
  * 
  */
 public class PeopleTalk implements ITalk {
+    private static Logger logger = LoggerFactory.getLogger(ViolateTest.class);
 
     public String username;
     public String age;
@@ -19,7 +25,7 @@ public class PeopleTalk implements ITalk {
     }
 
     public void talk(String msg) {
-        System.out.println(msg + "!你好,我是" + username + "，我年龄是" + age);
+        logger.info(msg + "!你好,我是" + username + "，我年龄是" + age);
     }
 
     public String getName() {
