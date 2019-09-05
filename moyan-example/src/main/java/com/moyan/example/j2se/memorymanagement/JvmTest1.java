@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 
-import static com.sun.deploy.util.BufferUtil.MB;
 
 public class JvmTest1 {
     private static Logger logger = LoggerFactory.getLogger(ViolateTest.class);

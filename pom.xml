@@ -10,6 +10,7 @@
     <version>1.0.0</version>
     <modules>
         <module>moyan-example</module>
+        <module>spring-mvc</module>
     </modules>
 
     <properties>
@@ -19,6 +20,11 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>4.1.36.Final</version>
+            </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-collections4</artifactId>
