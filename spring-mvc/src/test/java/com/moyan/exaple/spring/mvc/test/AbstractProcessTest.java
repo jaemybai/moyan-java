@@ -7,7 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:application.xml","classpath:spring-mybatis.xml" })
+@ContextConfiguration(locations = {"classpath:application.xml" })
 public class AbstractProcessTest {
 
     protected Logger logger = LoggerFactory.getLogger(getClass());

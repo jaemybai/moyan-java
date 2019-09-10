@@ -9,8 +9,10 @@
     <!--引入配置属性文件 -->  
     <context:property-placeholder location="classpath:config.properties" />  
   
-    <!--自动扫描含有@Service将其注入为bean -->  
-    <context:component-scan base-package="org.andy.shop.service" />  
+    <!--自动扫描含有@Service将其注入为bean -->
+    <context:component-scan base-package="com.moyan.example.springmvc" />
 
-    <import resource="classpath*:spring-mvc.xml" />
+    <!--<import resource="classpath*:spring-mvc.xml" />-->
+    <import resource="classpath*:spring-mybatis.xml" />
+
 </beans>  
