@@ -1,5 +1,6 @@
-package com.moyan.example.j2se.proxy;
+package com.moyan.example.j2se.proxy.staticproxy;
 
+import com.moyan.example.j2se.proxy.ITalk;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

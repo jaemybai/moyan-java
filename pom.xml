@@ -22,8 +22,8 @@
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.boot.version>2.1.6.RELEASE</spring.boot.version>
-        <spring.boot.redis.version>1.4.7.RELEASE</spring.boot.redis.version>
+        <moyan.spring.boot.version>2.1.6.RELEASE</moyan.spring.boot.version>
+        <moyan.spring.version>5.1.8.RELEASE</moyan.spring.version>
     </properties>
 
     <dependencyManagement>

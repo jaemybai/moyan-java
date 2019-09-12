@@ -1,4 +1,4 @@
-package com.moyan.example.j2se.proxy.test;
+package com.moyan.example.j2se.proxy.cglib;
 
 import java.lang.reflect.Method;
 

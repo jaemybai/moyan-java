@@ -1,11 +1,11 @@
-package com.moyan.example.j2se.proxy.test;
+package com.moyan.example.j2se.proxy.cglib;
 /**
  * 测试类
  * 
  * @author yanbin
  * 
  */
-public class Test {
+public class CglibProxyTest {
 
     public static void main(String[] args) {
         PeopleTalk peopleTalk = (PeopleTalk) new CglibProxy().getInstance(new PeopleTalk());

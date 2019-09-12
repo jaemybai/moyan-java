@@ -1,4 +1,4 @@
-package com.moyan.example.j2se.proxy.test;
+package com.moyan.example.j2se.proxy.cglib;
 
 import com.moyan.example.j2se.base.ViolateTest;
 import org.slf4j.Logger;
