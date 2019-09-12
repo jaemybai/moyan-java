@@ -81,11 +81,13 @@
 		</tx:attributes>
 	</tx:advice>
 	<!-- Spring aop事务管理 -->
-	<aop:config>
+
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+
+	<aop:config proxy-target-class="true">
 		<aop:pointcut id="transactionPointcut"
-			expression="execution(* com.moyan.example.springmvc.service..*Impl.*(..))" />
-		<aop:advisor pointcut-ref="transactionPointcut"
-			advice-ref="transactionAdvice" />
+			expression="execution(* com.moyan.example.springmvc.service.*.*(..))" />
 	</aop:config>
 
 </beans>
