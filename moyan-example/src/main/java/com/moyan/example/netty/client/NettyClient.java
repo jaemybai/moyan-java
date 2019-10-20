@@ -1,6 +1,6 @@
 package com.moyan.example.netty.client;
 
-import com.moyan.example.base.AbstractOperateLogTest;
+import com.moyan.example.AbstractOperateLogTest;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;

@@ -1,6 +1,6 @@
 package com.moyan.example.j2se.thread;
 
-import com.moyan.example.base.AbstractOperateLogTest;
+import com.moyan.example.AbstractOperateLogTest;
 
 public class DamenThreadTest extends AbstractOperateLogTest {
 

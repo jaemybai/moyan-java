@@ -19,16 +19,22 @@ public class SpringBootTestController {
     StringRedisTemplate redisTemplate;
 
     @ResponseBody
-    @RequestMapping("/print/{name}")
-    public Object printJson(@PathVariable(value = "name") String name) {
+    @RequestMapping("/put/{name}")
+    public Object putJson(@PathVariable(value = "name") String name) {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("id",System.currentTimeMillis());
         jsonObject.put("name",name);
+        redisTemplate.opsForValue().setIfAbsent(name,Long.toString(System.currentTimeMillis()));
+        return jsonObject;
+    }
 
-        redisTemplate.opsForValue().setIfAbsent(name,Long.toString(System.currentTimeMillis()),
-                30, TimeUnit.SECONDS);
-
-        ClusterOperations clusterOperations = redisTemplate.opsForCluster();
+    @ResponseBody
+    @RequestMapping("/get/{name}")
+    public Object getJson(@PathVariable(value = "name") String name) {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("id",System.currentTimeMillis());
+        String value = redisTemplate.opsForValue().get(name);
+        jsonObject.put("value",value);
         return jsonObject;
     }
 }

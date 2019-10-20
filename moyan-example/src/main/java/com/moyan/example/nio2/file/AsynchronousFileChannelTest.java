@@ -1,6 +1,6 @@
 package com.moyan.example.nio2.file;
 
-import com.moyan.example.base.AbstractOperateLogTest;
+import com.moyan.example.AbstractOperateLogTest;
 
 import java.nio.ByteBuffer;
 import java.nio.channels.AsynchronousFileChannel;

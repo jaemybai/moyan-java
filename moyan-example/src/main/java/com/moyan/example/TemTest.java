@@ -1,7 +1,5 @@
 package com.moyan.example;
 
-import com.moyan.example.base.AbstractOperateLogTest;
-
 import java.util.concurrent.ThreadPoolExecutor;
 
 public class TemTest extends AbstractOperateLogTest {

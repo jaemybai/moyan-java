@@ -1,6 +1,6 @@
 package com.moyan.example.j2se.juc;
 
-import com.moyan.example.base.AbstractOperateLogTest;
+import com.moyan.example.AbstractOperateLogTest;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Condition;

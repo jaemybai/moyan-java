@@ -1,4 +1,4 @@
-package com.moyan.example.base;
+package com.moyan.example;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

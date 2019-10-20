@@ -3,6 +3,3 @@ server:
   servlet:
     context-path: /springboot
 
-spring:
-  profiles:
-    active: redis.yml

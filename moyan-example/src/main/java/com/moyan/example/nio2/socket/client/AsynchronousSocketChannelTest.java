@@ -1,6 +1,6 @@
 package com.moyan.example.nio2.socket.client;
 
-import com.moyan.example.base.AbstractOperateLogTest;
+import com.moyan.example.AbstractOperateLogTest;
 
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
